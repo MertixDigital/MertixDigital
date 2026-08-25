@@ -1,5 +1,5 @@
+```html
 <!DOCTYPE html>
-
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -12,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
 * {
     margin: 0;
     padding: 0;
@@ -207,7 +208,7 @@ header {
     color: #2799d1;
 }
 
-/* HERO CARD */
+/* ================= HERO CARD ================= */
 
 .visual-card {
     min-height: 370px;
@@ -410,8 +411,7 @@ section {
         border-color 0.35s ease;
 }
 
-.package-card:hover,
-.package-card:active {
+.package-card:hover {
     transform: translateY(-7px) scale(1.015);
 
     border-color: #8dd7f8;
@@ -448,10 +448,6 @@ section {
     color: #111;
     font-size: 14px;
     font-weight: 700;
-}
-
-.package-card:hover .package-action {
-    color: #42aee8;
 }
 
 /* ================= PROJECTS ================= */
@@ -630,6 +626,100 @@ details p {
     font-size: 15px;
 }
 
+/* ================= LOGIN ================= */
+
+.login-section {
+    background: #f7fcff;
+}
+
+.login-box {
+    max-width: 500px;
+    margin: auto;
+
+    padding: 40px;
+
+    background: white;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 28px;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,0.07);
+}
+
+.login-box input {
+    width: 100%;
+
+    padding: 15px 17px;
+    margin-bottom: 14px;
+
+    border: 1px solid #ddd;
+    border-radius: 13px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.login-box input:focus {
+    border-color: #58bdf5;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(88,189,245,0.12);
+}
+
+.auth-button {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin-top: 6px;
+}
+
+.auth-message {
+    margin-top: 18px;
+
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    text-align: center;
+}
+
+/* ================= ACCOUNT ================= */
+
+.account-box {
+    max-width: 700px;
+    margin: auto;
+
+    padding: 40px;
+
+    background: white;
+
+    border-radius: 28px;
+
+    border: 1px solid #e5e5e5;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,0.07);
+}
+
+.account-email {
+    padding: 18px;
+
+    margin: 20px 0;
+
+    background: #e9f8ff;
+
+    border-radius: 15px;
+
+    color: #333;
+}
+
 /* ================= FOOTER ================= */
 
 footer {
@@ -688,6 +778,7 @@ footer {
     border-top: 1px solid #292929;
 
     color: #777;
+
     font-size: 13px;
 
     text-align: center;
@@ -741,10 +832,14 @@ footer {
         background: white;
 
         display: none;
+
         flex-direction: column;
+
         align-items: stretch;
 
-        box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        box-shadow:
+            0 15px 30px
+            rgba(0,0,0,0.08);
     }
 
     .nav-links.active {
@@ -812,11 +907,16 @@ footer {
 
     .footer-container {
         grid-template-columns: 1fr;
+
         padding: 50px 20px;
     }
-}
-</style>
 
+    .login-box {
+        padding: 25px;
+    }
+}
+
+</style>
 </head>
 
 <body>
@@ -825,7 +925,6 @@ footer {
 
 <header>
 
-```
 <div class="navbar">
 
     <a href="#home" class="logo">
@@ -850,11 +949,13 @@ footer {
 
         <a href="#contact">İletişim</a>
 
-        <a href="#login" class="login-link">
+        <a href="#login"
+           class="login-link">
             Giriş Yap
         </a>
 
-        <a href="#packages" class="order-button">
+        <a href="#packages"
+           class="order-button">
             Sipariş Ver
         </a>
 
@@ -864,11 +965,12 @@ footer {
         class="menu-button"
         onclick="toggleMenu()"
         aria-label="Menüyü aç">
+
         ☰
+
     </button>
 
 </div>
-```
 
 </header>
 
@@ -876,7 +978,6 @@ footer {
 
 <section class="hero" id="home">
 
-```
 <div class="hero-text reveal">
 
     <span class="hero-label">
@@ -897,18 +998,21 @@ footer {
 
         <a href="#packages"
            class="button button-primary">
+
             Paketleri İncele
+
         </a>
 
         <a href="#projects"
            class="button button-secondary">
+
             Projeleri Gör
+
         </a>
 
     </div>
 
 </div>
-
 
 <div class="hero-visual reveal">
 
@@ -941,7 +1045,6 @@ footer {
     </div>
 
 </div>
-```
 
 </section>
 
@@ -949,7 +1052,6 @@ footer {
 
 <section class="about" id="about">
 
-```
 <div class="container">
 
     <div class="section-heading reveal">
@@ -965,7 +1067,6 @@ footer {
 
     </div>
 
-
     <div class="about-grid">
 
         <div class="about-box reveal">
@@ -976,7 +1077,6 @@ footer {
             </strong>
 
         </div>
-
 
         <div class="about-text reveal">
 
@@ -1002,7 +1102,6 @@ footer {
     </div>
 
 </div>
-```
 
 </section>
 
@@ -1010,7 +1109,6 @@ footer {
 
 <section id="services">
 
-```
 <div class="container">
 
     <div class="section-heading center reveal">
@@ -1030,14 +1128,11 @@ footer {
 
     </div>
 
-
     <div class="services-grid">
 
         <div class="service-card reveal">
 
-            <div class="service-number">
-                01
-            </div>
+            <div class="service-number">01</div>
 
             <h3>
                 Web Tasarım
@@ -1050,12 +1145,9 @@ footer {
 
         </div>
 
-
         <div class="service-card reveal">
 
-            <div class="service-number">
-                02
-            </div>
+            <div class="service-number">02</div>
 
             <h3>
                 Kurumsal Web Siteleri
@@ -1068,12 +1160,9 @@ footer {
 
         </div>
 
-
         <div class="service-card reveal">
 
-            <div class="service-number">
-                03
-            </div>
+            <div class="service-number">03</div>
 
             <h3>
                 Ürün & Katalog
@@ -1086,12 +1175,9 @@ footer {
 
         </div>
 
-
         <div class="service-card reveal">
 
-            <div class="service-number">
-                04
-            </div>
+            <div class="service-number">04</div>
 
             <h3>
                 Mobil Uyumluluk
@@ -1104,12 +1190,9 @@ footer {
 
         </div>
 
-
         <div class="service-card reveal">
 
-            <div class="service-number">
-                05
-            </div>
+            <div class="service-number">05</div>
 
             <h3>
                 Özel Web Çözümleri
@@ -1122,12 +1205,9 @@ footer {
 
         </div>
 
-
         <div class="service-card reveal">
 
-            <div class="service-number">
-                06
-            </div>
+            <div class="service-number">06</div>
 
             <h3>
                 Bakım & Geliştirme
@@ -1143,7 +1223,6 @@ footer {
     </div>
 
 </div>
-```
 
 </section>
 
@@ -1151,7 +1230,6 @@ footer {
 
 <section class="packages" id="packages">
 
-```
 <div class="container">
 
     <div class="section-heading center reveal">
@@ -1171,15 +1249,12 @@ footer {
 
     </div>
 
-
     <div class="package-grid">
 
         <a href="siparis.html?paket=baslangic"
            class="package-card reveal">
 
-            <div class="package-number">
-                01
-            </div>
+            <div class="package-number">01</div>
 
             <h3>
                 Başlangıç Site
@@ -1196,13 +1271,10 @@ footer {
 
         </a>
 
-
         <a href="siparis.html?paket=klasik"
            class="package-card reveal">
 
-            <div class="package-number">
-                02
-            </div>
+            <div class="package-number">02</div>
 
             <h3>
                 Klasik Site
@@ -1219,13 +1291,10 @@ footer {
 
         </a>
 
-
         <a href="siparis.html?paket=yuksek"
            class="package-card reveal">
 
-            <div class="package-number">
-                03
-            </div>
+            <div class="package-number">03</div>
 
             <h3>
                 Yüksek Site
@@ -1242,13 +1311,10 @@ footer {
 
         </a>
 
-
         <a href="siparis.html?paket=ultra"
            class="package-card reveal">
 
-            <div class="package-number">
-                04
-            </div>
+            <div class="package-number">04</div>
 
             <h3>
                 Ultra Site
@@ -1268,7 +1334,6 @@ footer {
     </div>
 
 </div>
-```
 
 </section>
 
@@ -1276,7 +1341,6 @@ footer {
 
 <section class="projects" id="projects">
 
-```
 <div class="container">
 
     <div class="section-heading center reveal">
@@ -1294,7 +1358,6 @@ footer {
         </p>
 
     </div>
-
 
     <div class="project-grid">
 
@@ -1319,7 +1382,6 @@ footer {
 
         </div>
 
-
         <div class="project-card reveal">
 
             <div class="project-image">
@@ -1340,7 +1402,6 @@ footer {
             </div>
 
         </div>
-
 
         <div class="project-card reveal">
 
@@ -1366,7 +1427,6 @@ footer {
     </div>
 
 </div>
-```
 
 </section>
 
@@ -1374,7 +1434,6 @@ footer {
 
 <section id="process">
 
-```
 <div class="container">
 
     <div class="section-heading center reveal">
@@ -1388,7 +1447,6 @@ footer {
         </h2>
 
     </div>
-
 
     <div class="process-grid">
 
@@ -1409,7 +1467,6 @@ footer {
 
         </div>
 
-
         <div class="process-card reveal">
 
             <div class="process-number">
@@ -1427,7 +1484,6 @@ footer {
 
         </div>
 
-
         <div class="process-card reveal">
 
             <div class="process-number">
@@ -1444,7 +1500,6 @@ footer {
             </p>
 
         </div>
-
 
         <div class="process-card reveal">
 
@@ -1466,7 +1521,6 @@ footer {
     </div>
 
 </div>
-```
 
 </section>
 
@@ -1474,7 +1528,6 @@ footer {
 
 <section class="faq" id="faq">
 
-```
 <div class="container">
 
     <div class="section-heading center reveal">
@@ -1488,7 +1541,6 @@ footer {
         </h2>
 
     </div>
-
 
     <div class="faq-list reveal">
 
@@ -1506,7 +1558,6 @@ footer {
 
         </details>
 
-
         <details>
 
             <summary>
@@ -1520,7 +1571,6 @@ footer {
 
         </details>
 
-
         <details>
 
             <summary>
@@ -1533,7 +1583,6 @@ footer {
             </p>
 
         </details>
-
 
         <details>
 
@@ -1552,7 +1601,6 @@ footer {
     </div>
 
 </div>
-```
 
 </section>
 
@@ -1560,7 +1608,6 @@ footer {
 
 <section class="contact-section" id="contact">
 
-```
 <div class="container">
 
     <div class="contact-grid">
@@ -1582,11 +1629,12 @@ footer {
 
             <a href="tel:+905521528061"
                class="button button-primary">
+
                 Bizi Ara
+
             </a>
 
         </div>
-
 
         <div class="contact-info reveal">
 
@@ -1603,7 +1651,6 @@ footer {
 
             </a>
 
-
             <a class="contact-item"
                href="https://wa.me/905521528061">
 
@@ -1617,19 +1664,18 @@ footer {
 
             </a>
 
-
-            <div class="contact-item">
+            <a class="contact-item"
+               href="mailto:iletisim@mertixdigital.com">
 
                 <span>
                     E-POSTA
                 </span>
 
                 <strong>
-                    Şimdilik boş
+                    iletisim@mertixdigital.com
                 </strong>
 
-            </div>
-
+            </a>
 
             <div class="contact-item">
 
@@ -1648,7 +1694,124 @@ footer {
     </div>
 
 </div>
-```
+
+</section>
+
+<!-- ================= LOGIN ================= -->
+
+<section class="login-section" id="login">
+
+<div class="container">
+
+    <div class="login-box reveal">
+
+        <div class="section-heading center">
+
+            <small>
+                MERTIX DIGITAL
+            </small>
+
+            <h2>
+                Hesabınıza Giriş Yapın
+            </h2>
+
+            <p>
+                Hesabınız yoksa aşağıdan yeni hesap oluşturabilirsiniz.
+            </p>
+
+        </div>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="E-posta adresiniz"
+            autocomplete="email">
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Şifreniz"
+            autocomplete="current-password">
+
+        <button
+            class="button button-primary auth-button"
+            onclick="loginUser()">
+
+            Giriş Yap
+
+        </button>
+
+        <button
+            class="button button-secondary auth-button"
+            onclick="registerUser()">
+
+            Kayıt Ol
+
+        </button>
+
+        <button
+            class="button button-secondary auth-button"
+            onclick="resetPassword()">
+
+            Şifremi Unuttum
+
+        </button>
+
+        <p id="authMessage"
+           class="auth-message">
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ================= ACCOUNT ================= -->
+
+<section id="account"
+         class="login-section"
+         style="display:none;">
+
+<div class="container">
+
+    <div class="account-box reveal">
+
+        <div class="section-heading center">
+
+            <small>
+                HESABIM
+            </small>
+
+            <h2>
+                Hoş geldiniz 👋
+            </h2>
+
+        </div>
+
+        <div class="account-email">
+
+            <strong>
+                E-posta:
+            </strong>
+
+            <span id="userEmail">
+                -
+            </span>
+
+        </div>
+
+        <button
+            class="button button-primary auth-button"
+            onclick="logoutUser()">
+
+            Çıkış Yap
+
+        </button>
+
+    </div>
+
+</div>
 
 </section>
 
@@ -1656,7 +1819,6 @@ footer {
 
 <footer>
 
-```
 <div class="footer-container">
 
     <div class="footer-box">
@@ -1672,39 +1834,25 @@ footer {
 
     </div>
 
-
     <div class="footer-box">
 
         <h3>
             Menü
         </h3>
 
-        <a href="#home">
-            Ana Sayfa
-        </a>
+        <a href="#home">Ana Sayfa</a>
 
-        <a href="#about">
-            Hakkımızda
-        </a>
+        <a href="#about">Hakkımızda</a>
 
-        <a href="#services">
-            Hizmetler
-        </a>
+        <a href="#services">Hizmetler</a>
 
-        <a href="#packages">
-            Paketler
-        </a>
+        <a href="#packages">Paketler</a>
 
-        <a href="#projects">
-            Projeler
-        </a>
+        <a href="#projects">Projeler</a>
 
-        <a href="#contact">
-            İletişim
-        </a>
+        <a href="#contact">İletişim</a>
 
     </div>
-
 
     <div class="footer-box">
 
@@ -1720,84 +1868,505 @@ footer {
             WhatsApp
         </a>
 
-        <a href="#contact">
-            E-posta
+        <a href="mailto:iletisim@mertixdigital.com">
+            iletisim@mertixdigital.com
         </a>
 
     </div>
 
 </div>
 
-
 <div class="footer-bottom">
 
     © 2026 Mertix Digital — Tüm Hakları Saklıdır.
 
 </div>
-```
 
 </footer>
 
+<!-- ================= FIREBASE ================= -->
+
+<script type="module">
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    sendEmailVerification,
+    sendPasswordResetEmail,
+    signOut,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyAOiLYwGXlPdxy_VoCKwYFpXd9iMMrOdtg",
+
+    authDomain: "mertix-digital.firebaseapp.com",
+
+    projectId: "mertix-digital",
+
+    storageBucket: "mertix-digital.firebasestorage.app",
+
+    messagingSenderId: "481724280508",
+
+    appId: "1:481724280508:web:7760a545d1e2303bcfeab9",
+
+    measurementId: "G-45CBZFGRGT"
+
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+
+window.firebaseAuth = auth;
+
+window.firebaseFunctions = {
+
+    createUserWithEmailAndPassword,
+
+    signInWithEmailAndPassword,
+
+    sendEmailVerification,
+
+    sendPasswordResetEmail,
+
+    signOut
+
+};
+
+
+onAuthStateChanged(auth, (user) => {
+
+    const loginLink =
+        document.querySelector(".login-link");
+
+    const accountSection =
+        document.getElementById("account");
+
+    const loginSection =
+        document.getElementById("login");
+
+    const userEmail =
+        document.getElementById("userEmail");
+
+
+    if (user && user.emailVerified) {
+
+        if (loginLink) {
+
+            loginLink.textContent =
+                "Hesabım";
+
+            loginLink.href =
+                "#account";
+
+        }
+
+        if (accountSection) {
+
+            accountSection.style.display =
+                "block";
+
+        }
+
+        if (loginSection) {
+
+            loginSection.style.display =
+                "none";
+
+        }
+
+        if (userEmail) {
+
+            userEmail.textContent =
+                user.email;
+
+        }
+
+    }
+
+    else {
+
+        if (loginLink) {
+
+            loginLink.textContent =
+                "Giriş Yap";
+
+            loginLink.href =
+                "#login";
+
+        }
+
+        if (accountSection) {
+
+            accountSection.style.display =
+                "none";
+
+        }
+
+        if (loginSection) {
+
+            loginSection.style.display =
+                "block";
+
+        }
+
+    }
+
+});
+
+
+/* ================= KAYIT ================= */
+
+window.registerUser = async function() {
+
+    const email =
+        document.getElementById("email")
+        .value
+        .trim();
+
+    const password =
+        document.getElementById("password")
+        .value;
+
+    const message =
+        document.getElementById("authMessage");
+
+
+    if (!email || !password) {
+
+        message.textContent =
+            "Lütfen e-posta ve şifrenizi girin.";
+
+        return;
+
+    }
+
+
+    if (password.length < 6) {
+
+        message.textContent =
+            "Şifre en az 6 karakter olmalıdır.";
+
+        return;
+
+    }
+
+
+    try {
+
+        const credential =
+            await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+
+        await sendEmailVerification(
+            credential.user
+        );
+
+
+        message.textContent =
+            "📧 Kayıt başarılı! Doğrulama bağlantısı e-posta adresinize gönderildi. Gelen kutunuzu kontrol edin.";
+
+
+        await signOut(auth);
+
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+
+        if (
+            error.code ===
+            "auth/email-already-in-use"
+        ) {
+
+            message.textContent =
+                "Bu e-posta adresiyle zaten kayıtlı bir hesap var.";
+
+        }
+
+        else if (
+            error.code ===
+            "auth/invalid-email"
+        ) {
+
+            message.textContent =
+                "Geçerli bir e-posta adresi girin.";
+
+        }
+
+        else if (
+            error.code ===
+            "auth/weak-password"
+        ) {
+
+            message.textContent =
+                "Şifreniz çok zayıf.";
+
+        }
+
+        else {
+
+            message.textContent =
+                "Kayıt sırasında bir hata oluştu.";
+
+        }
+
+    }
+
+};
+
+
+/* ================= GİRİŞ ================= */
+
+window.loginUser = async function() {
+
+    const email =
+        document.getElementById("email")
+        .value
+        .trim();
+
+    const password =
+        document.getElementById("password")
+        .value;
+
+    const message =
+        document.getElementById("authMessage");
+
+
+    if (!email || !password) {
+
+        message.textContent =
+            "Lütfen e-posta ve şifrenizi girin.";
+
+        return;
+
+    }
+
+
+    try {
+
+        const credential =
+            await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+
+        const user =
+            credential.user;
+
+
+        if (!user.emailVerified) {
+
+            message.textContent =
+                "📧 E-posta adresiniz doğrulanmamış. Önce e-postanıza gelen doğrulama bağlantısına tıklayın.";
+
+            await signOut(auth);
+
+            return;
+
+        }
+
+
+        message.textContent =
+            "Giriş başarılı!";
+
+
+        setTimeout(() => {
+
+            window.location.href =
+                "#account";
+
+        }, 700);
+
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+
+        if (
+            error.code ===
+            "auth/invalid-credential"
+        ) {
+
+            message.textContent =
+                "E-posta veya şifre hatalı.";
+
+        }
+
+        else {
+
+            message.textContent =
+                "Giriş sırasında bir hata oluştu.";
+
+        }
+
+    }
+
+};
+
+
+/* ================= ŞİFRE SIFIRLAMA ================= */
+
+window.resetPassword = async function() {
+
+    const email =
+        document.getElementById("email")
+        .value
+        .trim();
+
+    const message =
+        document.getElementById("authMessage");
+
+
+    if (!email) {
+
+        message.textContent =
+            "Şifre sıfırlamak için önce e-posta adresinizi yazın.";
+
+        return;
+
+    }
+
+
+    try {
+
+        await sendPasswordResetEmail(
+            auth,
+            email
+        );
+
+
+        message.textContent =
+            "📧 Şifre sıfırlama bağlantısı e-posta adresinize gönderildi.";
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+        message.textContent =
+            "Şifre sıfırlama sırasında bir hata oluştu.";
+
+    }
+
+};
+
+
+/* ================= ÇIKIŞ ================= */
+
+window.logoutUser = async function() {
+
+    await signOut(auth);
+
+    window.location.href =
+        "#home";
+
+};
+
+</script>
+
+<!-- ================= NORMAL JAVASCRIPT ================= -->
+
 <script>
 
-/* ================= MOBİL MENÜ ================= */
+/* MOBİL MENÜ */
 
 function toggleMenu() {
 
-    const menu = document.getElementById("navLinks");
+    const menu =
+        document.getElementById("navLinks");
 
     menu.classList.toggle("active");
 
 }
 
 
-/* ================= MENÜ KAPAT ================= */
+/* MENÜ KAPAT */
 
-document.querySelectorAll(".nav-links a").forEach(function(link) {
+document
+    .querySelectorAll(".nav-links a")
+    .forEach(function(link) {
 
-    link.addEventListener("click", function() {
+        link.addEventListener(
+            "click",
+            function() {
 
-        document
-            .getElementById("navLinks")
-            .classList.remove("active");
+                document
+                    .getElementById("navLinks")
+                    .classList
+                    .remove("active");
+
+            }
+        );
 
     });
 
-});
+
+/* SCROLL ANİMASYONU */
+
+const observer =
+    new IntersectionObserver(
+
+        function(entries) {
+
+            entries.forEach(
+                function(entry) {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target
+                            .classList
+                            .add("show");
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold: 0.12
+        }
+
+    );
 
 
-/* ================= SCROLL ANİMASYON ================= */
+document
+    .querySelectorAll(".reveal")
+    .forEach(function(element) {
 
-const observer = new IntersectionObserver(
+        observer.observe(element);
 
-    function(entries) {
-
-        entries.forEach(function(entry) {
-
-            if (entry.isIntersecting) {
-
-                entry.target.classList.add("show");
-
-            }
-
-        });
-
-    },
-
-    {
-        threshold: 0.12
-    }
-
-);
-
-
-document.querySelectorAll(".reveal").forEach(function(element) {
-
-    observer.observe(element);
-
-});
+    });
 
 </script>
 
 </body>
 </html>
+```
