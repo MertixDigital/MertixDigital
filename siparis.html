@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sipariş Ver | Mertix Digital</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: #f5f8fc;
+      color: #172033;
+      min-height: 100vh;
+    }
+
+    header {
+      width: 100%;
+      padding: 18px 7%;
+      background: rgba(255,255,255,0.95);
+      border-bottom: 1px solid #e8edf5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: 800;
+      color: #111827;
+    }
+
+    .logo span {
+      color: #3182ce;
+    }
+
+    .back {
+      text-decoration: none;
+      color: #3182ce;
+      font-weight: 600;
+    }
+
+    .container {
+      width: min(900px, 92%);
+      margin: 55px auto;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .title h1 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .title p {
+      color: #6b7280;
+      font-size: 16px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 22px;
+      padding: 35px;
+      box-shadow: 0 15px 45px rgba(30, 60, 90, 0.08);
+      border: 1px solid #e9eef5;
+    }
+
+    .selected-package {
+      background: #eef6ff;
+      border: 1px solid #cfe5ff;
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin-bottom: 28px;
+    }
+
+    .selected-package small {
+      display: block;
+      color: #64748b;
+      margin-bottom: 5px;
+    }
+
+    .selected-package strong {
+      color: #2276c9;
+      font-size: 20px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 14px 15px;
+      border: 1px solid #dce3ec;
+      border-radius: 12px;
+      outline: none;
+      font-family: inherit;
+      font-size: 14px;
+      transition: 0.2s;
+      background: #fff;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #3182ce;
+      box-shadow: 0 0 0 3px rgba(49,130,206,0.1);
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 28px;
+      border: none;
+      padding: 16px;
+      border-radius: 12px;
+      background: #3182ce;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .submit-btn:hover {
+      background: #256bb0;
+      transform: translateY(-1px);
+    }
+
+    .info {
+      margin-top: 18px;
+      text-align: center;
+      color: #718096;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .success {
+      display: none;
+      text-align: center;
+      padding: 30px 10px;
+    }
+
+    .success-icon {
+      font-size: 55px;
+      margin-bottom: 15px;
+    }
+
+    .success h2 {
+      margin-bottom: 10px;
+    }
+
+    .success p {
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .home-btn {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 13px 22px;
+      border-radius: 10px;
+      background: #3182ce;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    @media (max-width: 650px) {
+      .title h1 {
+        font-size: 30px;
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .full {
+        grid-column: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" class="logo">Mertix <span>Digital</span></a>
+  <a href="index.html#paketler" class="back">← Paketlere Dön</a>
+</header>
+
+<main class="container">
+
+  <div class="title">
+    <h1>Teklif Al</h1>
+    <p>Size en uygun web sitesi için bilgilerinizi doldurun.</p>
+  </div>
+
+  <div class="card">
+
+    <div class="selected-package">
+      <small>Seçtiğiniz paket</small>
+      <strong id="packageName">Paket seçilmedi</strong>
+    </div>
+
+    <form id="orderForm">
+
+      <div class="form-grid">
+
+        <div class="form-group">
+          <label for="name">Ad Soyad *</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Adınız ve soyadınız"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Telefon *</label>
+          <input
+            type="tel"
+            id="phone"
+            placeholder="0555 555 55 55"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-posta *</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="ornek@mail.com"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="business">İşletme / Marka Adı</label>
+          <input
+            type="text"
+            id="business"
+            placeholder="Örn. Çağla Çerçeve"
+          >
+        </div>
+
+        <div class="form-group full">
+          <label for="websiteType">Nasıl bir web sitesi istiyorsunuz?</label>
+
+          <select id="websiteType">
+            <option value="">Seçiniz</option>
+            <option value="Kurumsal">Kurumsal Web Sitesi</option>
+            <option value="E-Ticaret">E-Ticaret Sitesi</option>
+            <option value="Portfolyo">Portfolyo / Kişisel Site</option>
+            <option value="Randevu">Randevu / Rezervasyon Sitesi</option>
+            <option value="Blog">Blog / İçerik Sitesi</option>
+            <option value="Diger">Diğer</option>
+          </select>
+        </div>
+
+        <div class="form-group full">
+          <label for="details">Projeniz hakkında bilgi</label>
+          <textarea
+            id="details"
+            placeholder="Sitenizde olmasını istediğiniz özellikleri, sayfaları veya diğer detayları yazabilirsiniz."
+          ></textarea>
+        </div>
+
+      </div>
+
+      <button type="submit" class="submit-btn">
+        Teklif Talebini Gönder
+      </button>
+
+      <div class="info">
+        Bilgileriniz Mertix Digital ekibine iletilir.<br>
+        En kısa sürede sizinle iletişime geçilir.
+      </div>
+
+    </form>
+
+    <div class="success" id="successMessage">
+      <div class="success-icon">✅</div>
+
+      <h2>Talebiniz Alındı!</h2>
+
+      <p>
+        Teklif talebiniz başarıyla oluşturuldu.<br>
+        Mertix Digital ekibi en kısa sürede sizinle iletişime geçecektir.
+      </p>
+
+      <a href="index.html" class="home-btn">
+        Ana Sayfaya Dön
+      </a>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  © 2026 Mertix Digital — Tüm hakları saklıdır.
+</footer>
+
+<script>
+  // URL'deki paket bilgisini al
+  const params = new URLSearchParams(window.location.search);
+  const packageType = params.get("paket");
+
+  const packageNames = {
+    baslangic: "Başlangıç Site",
+    klasik: "Klasik Site",
+    yuksek: "Yüksek Site",
+    ultra: "Ultra Site"
+  };
+
+  const packageNameElement = document.getElementById("packageName");
+
+  if (packageType && packageNames[packageType]) {
+    packageNameElement.textContent = packageNames[packageType];
+  } else {
+    packageNameElement.textContent = "Genel Teklif";
+  }
+
+
+  // Form gönderme
+  const form = document.getElementById("orderForm");
+  const successMessage = document.getElementById("successMessage");
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Şimdilik form gönderildi ekranı
+    // Firebase bağlantısını sonraki aşamada ekleyeceğiz.
+    form.style.display = "none";
+    successMessage.style.display = "block";
+  });
+</script>
+
+</body>
+</html>
