@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -167,12 +168,33 @@
       transform: translateY(-1px);
     }
 
+    .submit-btn:disabled {
+      opacity: 0.65;
+      cursor: wait;
+      transform: none;
+    }
+
     .info {
       margin-top: 18px;
       text-align: center;
       color: #718096;
       font-size: 13px;
       line-height: 1.6;
+    }
+
+    .status {
+      display: none;
+      margin-top: 16px;
+      padding: 13px;
+      border-radius: 10px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .status.error {
+      display: block;
+      background: #fff1f2;
+      color: #be123c;
     }
 
     .success {
@@ -214,6 +236,14 @@
     }
 
     @media (max-width: 650px) {
+      header {
+        padding: 16px 5%;
+      }
+
+      .logo {
+        font-size: 21px;
+      }
+
       .title h1 {
         font-size: 30px;
       }
@@ -260,46 +290,30 @@
 
         <div class="form-group">
           <label for="name">Ad Soyad *</label>
-          <input
-            type="text"
-            id="name"
-            placeholder="Adınız ve soyadınız"
-            required
-          >
+          <input type="text" id="name"
+            placeholder="Adınız ve soyadınız" required>
         </div>
 
         <div class="form-group">
           <label for="phone">Telefon *</label>
-          <input
-            type="tel"
-            id="phone"
-            placeholder="0555 555 55 55"
-            required
-          >
+          <input type="tel" id="phone"
+            placeholder="0555 555 55 55" required>
         </div>
 
         <div class="form-group">
           <label for="email">E-posta *</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="ornek@mail.com"
-            required
-          >
+          <input type="email" id="email"
+            placeholder="ornek@mail.com" required>
         </div>
 
         <div class="form-group">
           <label for="business">İşletme / Marka Adı</label>
-          <input
-            type="text"
-            id="business"
-            placeholder="Örn. Çağla Çerçeve"
-          >
+          <input type="text" id="business"
+            placeholder="Örn. Çağla Çerçeve">
         </div>
 
         <div class="form-group full">
           <label for="websiteType">Nasıl bir web sitesi istiyorsunuz?</label>
-
           <select id="websiteType">
             <option value="">Seçiniz</option>
             <option value="Kurumsal">Kurumsal Web Sitesi</option>
@@ -313,10 +327,8 @@
 
         <div class="form-group full">
           <label for="details">Projeniz hakkında bilgi</label>
-          <textarea
-            id="details"
-            placeholder="Sitenizde olmasını istediğiniz özellikleri, sayfaları veya diğer detayları yazabilirsiniz."
-          ></textarea>
+          <textarea id="details"
+            placeholder="Sitenizde olmasını istediğiniz özellikleri, sayfaları veya diğer detayları yazabilirsiniz."></textarea>
         </div>
 
       </div>
@@ -324,6 +336,8 @@
       <button type="submit" class="submit-btn">
         Teklif Talebini Gönder
       </button>
+
+      <div class="status" id="formStatus" role="status"></div>
 
       <div class="info">
         Bilgileriniz Mertix Digital ekibine iletilir.<br>
@@ -334,17 +348,12 @@
 
     <div class="success" id="successMessage">
       <div class="success-icon">✅</div>
-
       <h2>Talebiniz Alındı!</h2>
-
       <p>
         Teklif talebiniz başarıyla oluşturuldu.<br>
         Mertix Digital ekibi en kısa sürede sizinle iletişime geçecektir.
       </p>
-
-      <a href="index.html" class="home-btn">
-        Ana Sayfaya Dön
-      </a>
+      <a href="index.html" class="home-btn">Ana Sayfaya Dön</a>
     </div>
 
   </div>
@@ -355,8 +364,41 @@
   © 2026 Mertix Digital — Tüm hakları saklıdır.
 </footer>
 
-<script>
-  // URL'deki paket bilgisini al
+<script type="module">
+  import { initializeApp, getApps, getApp }
+    from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+
+  import {
+    getAuth,
+    onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+  /*
+    Firebase Console > Project settings > Your apps
+    bölümündeki gerçek web uygulaması yapılandırmasını kullan.
+    Aşağıdaki değerleri kendi projenle karşılaştır.
+  */
+  const firebaseConfig = {
+    apiKey: "AIzaSyAOiLYwGXlPdxy_VoCKwYFpXd9iMMrOdtg",
+    authDomain: "mertix-digital.firebaseapp.com",
+    projectId: "mertix-digital",
+    appId: "1:481724280508:web:7760a545d1e2303bcfeab9"
+  };
+
+  const app = getApps().length
+    ? getApp()
+    : initializeApp(firebaseConfig);
+
+  const db = getFirestore(app);
+  const auth = getAuth(app);
+
   const params = new URLSearchParams(window.location.search);
   const packageType = params.get("paket");
 
@@ -367,26 +409,80 @@
     ultra: "Ultra Site"
   };
 
-  const packageNameElement = document.getElementById("packageName");
+  document.getElementById("packageName").textContent =
+    packageNames[packageType] || "Genel Teklif";
 
-  if (packageType && packageNames[packageType]) {
-    packageNameElement.textContent = packageNames[packageType];
-  } else {
-    packageNameElement.textContent = "Genel Teklif";
+  const form = document.getElementById("orderForm");
+  const submitButton = form.querySelector('button[type="submit"]');
+  const successMessage = document.getElementById("successMessage");
+  const formStatus = document.getElementById("formStatus");
+
+  let currentUser = null;
+  let authReady = false;
+
+  function showError(message) {
+    formStatus.textContent = message;
+    formStatus.className = "status error";
   }
 
+  function clearError() {
+    formStatus.textContent = "";
+    formStatus.className = "status";
+  }
 
-  // Form gönderme
-  const form = document.getElementById("orderForm");
-  const successMessage = document.getElementById("successMessage");
+  onAuthStateChanged(auth, (user) => {
+    currentUser = user;
+    authReady = true;
+  });
 
-  form.addEventListener("submit", function(event) {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    clearError();
 
-    // Şimdilik form gönderildi ekranı
-    // Firebase bağlantısını sonraki aşamada ekleyeceğiz.
-    form.style.display = "none";
-    successMessage.style.display = "block";
+    if (!authReady) {
+      showError("Giriş kontrol ediliyor. Birkaç saniye sonra tekrar dene.");
+      return;
+    }
+
+    if (!currentUser) {
+      showError("Sipariş göndermek için önce Google hesabınla giriş yapmalısın.");
+      return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Gönderiliyor...";
+
+    try {
+      await addDoc(collection(db, "siparisler"), {
+        uid: currentUser.uid,
+        adSoyad: document.getElementById("name").value.trim(),
+        telefon: document.getElementById("phone").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        isletme: document.getElementById("business").value.trim(),
+        siteTuru: document.getElementById("websiteType").value,
+        paket: packageNames[packageType] || "Genel Teklif",
+        detaylar: document.getElementById("details").value.trim(),
+        durum: "Yeni",
+        olusturulma: serverTimestamp()
+      });
+
+      form.style.display = "none";
+      successMessage.style.display = "block";
+
+    } catch (error) {
+      console.error("Sipariş kaydetme hatası:", error);
+
+      if (error.code === "permission-denied") {
+        showError("Firebase izin vermedi. Firestore Rules ayarlarını kontrol et.");
+      } else if (error.code === "unauthenticated") {
+        showError("Oturumun sona ermiş. Google hesabınla tekrar giriş yap.");
+      } else {
+        showError("Sipariş kaydedilemedi. Firebase ayarlarını kontrol et ve tekrar dene.");
+      }
+
+      submitButton.disabled = false;
+      submitButton.textContent = "Teklif Talebini Gönder";
+    }
   });
 </script>
 
