@@ -1,945 +1,1554 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mertix Digital</title>
+<meta name="theme-color" content="#f7fcff">
+<meta name="description" content="Mertix Digital ile modern, mobil uyumlu ve özgün web siteleri.">
+<title>Mertix Digital | Dijital Çözümler</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --blue: #58bdf5;
-  --bg: #f7fcff;
-  --dark: #111;
-  --muted: #626b73;
-  --line: #e4e9ed;
+    --blue: #58bdf5;
+    --blue-dark: #2498d1;
+    --blue-light: #e9f8ff;
+    --background: #f7fcff;
+    --text: #111827;
+    --muted: #667085;
+    --border: #e5eaf0;
+    --white: #fff;
+    --dark: #111;
+    --radius: 22px;
+    --shadow: 0 18px 50px rgba(15, 35, 55, .07);
 }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 85px;
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
 }
 
 body {
-  font-family: Inter, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--dark);
-  line-height: 1.6;
+    font-family: "Inter", sans-serif;
+    background: var(--background);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+body, button, input {
+    font-family: "Inter", sans-serif;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    text-decoration: none;
+    color: inherit;
 }
 
 button, input {
-  font: inherit;
+    font: inherit;
 }
 
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  background: #ffffffed;
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid #0000000c;
+button, a {
+    -webkit-tap-highlight-color: transparent;
 }
 
-.nav {
-  max-width: 1180px;
-  height: 76px;
-  margin: auto;
-  padding: 0 22px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo {
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: -1px;
-}
-
-.logo span, footer span {
-  color: var(--blue);
-}
-
-.links {
-  display: flex;
-  align-items: center;
-  gap: 17px;
-}
-
-.links a {
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.links a:hover {
-  color: #248fc5;
-}
-
-.pill {
-  background: #111;
-  color: white !important;
-  padding: 11px 15px;
-  border-radius: 12px;
-}
-
-.menu {
-  display: none;
-  background: none;
-  border: 0;
-  font-size: 27px;
-  cursor: pointer;
-}
-
-.hero {
-  max-width: 1180px;
-  min-height: 100vh;
-  margin: auto;
-  padding: 145px 22px 80px;
-  display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: 50px;
-  align-items: center;
-}
-
-.eyebrow {
-  display: inline-block;
-  background: #e3f5ff;
-  color: #258fc4;
-  border-radius: 25px;
-  padding: 8px 13px;
-  font-size: 12px;
-  font-weight: 800;
-  margin-bottom: 20px;
-}
-
-.hero h1 {
-  font-size: clamp(45px, 6vw, 76px);
-  line-height: 1.04;
-  letter-spacing: -3px;
-  margin-bottom: 23px;
-}
-
-.hero h1 span {
-  color: var(--blue);
-}
-
-.hero p {
-  color: var(--muted);
-  font-size: 17px;
-  max-width: 600px;
-  margin-bottom: 28px;
-}
-
-.actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  display: inline-block;
-  border: 0;
-  border-radius: 13px;
-  padding: 14px 20px;
-  font-weight: 800;
-  font-size: 13px;
-  cursor: pointer;
-  transition: .2s;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-.primary {
-  background: var(--blue);
-  color: white;
-}
-
-.secondary {
-  background: white;
-  border: 1px solid var(--line);
-}
-
-.hero-card {
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: 30px;
-  padding: 32px;
-  min-height: 340px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 25px 65px #0000000e;
-}
-
-.hero-card h2 {
-  font-size: 32px;
-  line-height: 1.2;
-}
-
-.hero-card p {
-  font-size: 14px;
-  margin: 0;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--blue);
-}
-
-section {
-  padding: 95px 22px;
+button {
+    cursor: pointer;
 }
 
 .container {
-  max-width: 1180px;
-  margin: auto;
+    width: min(1200px, calc(100% - 44px));
+    margin-inline: auto;
 }
 
-.heading {
-  text-align: center;
-  margin-bottom: 42px;
+section {
+    padding: 100px 0;
 }
 
-.heading small {
-  font-size: 12px;
-  color: #258fc4;
-  font-weight: 800;
-  letter-spacing: 1px;
+.section-heading {
+    margin-bottom: 45px;
 }
 
-.heading h2 {
-  font-size: clamp(32px, 4vw, 48px);
-  letter-spacing: -1.7px;
-  margin: 9px 0;
+.section-heading.center {
+    text-align: center;
 }
 
-.heading p {
-  max-width: 650px;
-  margin: auto;
-  color: var(--muted);
+.section-heading small,
+.eyebrow {
+    color: var(--blue-dark);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
 }
 
-.about, .projects, .faq {
-  background: white;
+.section-heading h2 {
+    margin-top: 12px;
+    font-size: clamp(32px, 4.5vw, 49px);
+    letter-spacing: -2px;
+    line-height: 1.12;
 }
 
-.about-grid, .contact-grid {
-  display: grid;
-  grid-template-columns: .8fr 1.2fr;
-  gap: 48px;
-  align-items: center;
+.section-heading p {
+    max-width: 650px;
+    margin: 15px auto 0;
+    color: var(--muted);
+    line-height: 1.8;
 }
 
-.about-art {
-  background: #e4f6ff;
-  border-radius: 25px;
-  padding: 40px;
-  min-height: 260px;
-  display: flex;
-  align-items: center;
-  font-size: 39px;
-  font-weight: 800;
+.button {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 14px 21px;
+    border: 1px solid transparent;
+    border-radius: 13px;
+    font-size: 14px;
+    font-weight: 750;
+    transition: .25s ease;
+}
+
+.button-primary {
+    background: var(--blue);
+    color: white;
+}
+
+.button-primary:hover {
+    background: var(--blue-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(88,189,245,.25);
+}
+
+.button-secondary {
+    background: white;
+    border-color: var(--border);
+    color: var(--text);
+}
+
+.button-secondary:hover {
+    border-color: var(--blue);
+    color: var(--blue-dark);
+}
+
+.button-dark {
+    background: var(--dark);
+    color: white;
+}
+
+.button-dark:hover {
+    background: #303030;
+    transform: translateY(-2px);
+}
+
+.full-width {
+    width: 100%;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+/* HEADER */
+
+.site-header {
+    position: fixed;
+    z-index: 1000;
+    inset: 0 0 auto;
+    background: rgba(255,255,255,.91);
+    border-bottom: 1px solid rgba(15,23,42,.06);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.navbar {
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.logo {
+    flex-shrink: 0;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -1.2px;
+}
+
+.logo span {
+    color: var(--blue);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 19px;
+}
+
+.nav-links > a {
+    font-size: 12px;
+    font-weight: 650;
+    color: #343b45;
+    transition: color .2s;
+}
+
+.nav-links > a:hover {
+    color: var(--blue-dark);
+}
+
+.nav-links .login-link {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.nav-links .order-button {
+    padding: 12px 15px;
+    background: var(--dark);
+    color: white;
+    border-radius: 11px;
+}
+
+.nav-links .order-button:hover {
+    background: var(--blue-dark);
+    color: white;
+}
+
+.menu-button {
+    display: none;
+    width: 43px;
+    height: 43px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: white;
+    color: var(--text);
+    font-size: 24px;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 720px;
+    padding: 150px 0 85px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    align-items: center;
+    gap: 65px;
+}
+
+.hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 13px;
+    margin-bottom: 24px;
+    border: 1px solid #d5f0ff;
+    border-radius: 30px;
+    background: var(--blue-light);
+    color: #278fc4;
+    font-size: 12px;
+    font-weight: 750;
+}
+
+.hero-label::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--blue);
+}
+
+.hero h1 {
+    max-width: 720px;
+    font-size: clamp(43px, 5.8vw, 75px);
+    line-height: 1.04;
+    letter-spacing: -4px;
+}
+
+.hero h1 span {
+    display: block;
+    color: var(--blue-dark);
+}
+
+.hero-copy {
+    max-width: 600px;
+    margin-top: 23px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.hero-note {
+    margin-top: 20px;
+    color: #7b8490;
+    font-size: 12px;
+}
+
+.hero-visual {
+    position: relative;
+    min-height: 400px;
+    display: grid;
+    place-items: center;
+}
+
+.hero-glow {
+    position: absolute;
+    width: 310px;
+    height: 310px;
+    border-radius: 50%;
+    background: #d7f3ff;
+    filter: blur(3px);
+}
+
+.visual-card {
+    position: relative;
+    width: min(100%, 400px);
+    min-height: 360px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgba(255,255,255,.95);
+    border: 1px solid rgba(255,255,255,.9);
+    border-radius: 28px;
+    box-shadow: 0 30px 80px rgba(35,102,140,.15);
+    transform: rotate(1.5deg);
+}
+
+.visual-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.visual-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #55d6a0;
+    box-shadow: 0 0 0 5px #e4fff2;
+}
+
+.visual-card h2 {
+    font-size: clamp(28px, 3.5vw, 38px);
+    line-height: 1.2;
+    letter-spacing: -1.6px;
+}
+
+.visual-card h2 span {
+    color: var(--blue-dark);
+}
+
+.visual-card p {
+    margin-top: 15px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.visual-bottom {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 26px;
+}
+
+.visual-mini {
+    padding: 13px 9px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.visual-mini strong {
+    display: block;
+    font-size: 18px;
+}
+
+.visual-mini span {
+    display: block;
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+/* ABOUT */
+
+.about {
+    background: white;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: 55px;
+    align-items: center;
+}
+
+.about-panel {
+    min-height: 310px;
+    padding: 38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(145deg, #eaf9ff, #d5f1ff);
+    border-radius: 26px;
+}
+
+.about-panel .big-mark {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.1;
+}
+
+.about-panel .big-mark span {
+    color: var(--blue-dark);
+}
+
+.about-panel p {
+    max-width: 270px;
+    color: #506c7c;
+    font-size: 14px;
+    line-height: 1.8;
 }
 
 .about-copy p {
-  margin-bottom: 16px;
-  color: var(--muted);
+    margin-bottom: 17px;
+    color: var(--muted);
+    line-height: 1.9;
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+.about-points {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 25px;
 }
 
-.card, .package {
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  padding: 28px;
-  transition: .25s;
+.about-point {
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    font-size: 13px;
+    font-weight: 700;
 }
 
-.card:hover, .package:hover, .project:hover {
-  transform: translateY(-5px);
-  border-color: #a4dff8;
-  box-shadow: 0 18px 40px #0000000d;
+.about-point span {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--blue-dark);
+    font-size: 18px;
 }
 
-.num {
-  font-size: 12px;
-  font-weight: 800;
-  color: #2ca5df;
-  margin-bottom: 25px;
+/* SERVICES */
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 19px;
 }
 
-.card h3, .package h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
+.service-card {
+    padding: 28px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: .25s ease;
 }
 
-.card p, .package p, .project p, .step p {
-  font-size: 14px;
-  color: var(--muted);
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: #b4e6fb;
+    box-shadow: var(--shadow);
 }
+
+.service-icon {
+    width: 49px;
+    height: 49px;
+    margin-bottom: 26px;
+    display: grid;
+    place-items: center;
+    background: var(--blue-light);
+    border-radius: 15px;
+    color: var(--blue-dark);
+    font-size: 23px;
+}
+
+.service-card h3 {
+    margin-bottom: 12px;
+    font-size: 18px;
+}
+
+.service-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* PACKAGES */
 
 .packages {
-  background: #f1faff;
+    background: #f0f9fe;
 }
 
 .package-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 17px;
 }
 
-.package p {
-  min-height: 85px;
+.package-card {
+    position: relative;
+    min-height: 280px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: white;
+    border: 1px solid #e1eaf0;
+    border-radius: 22px;
+    transition: .25s ease;
 }
 
-.package strong {
-  display: block;
-  margin-top: 20px;
-  font-size: 13px;
+.package-card:hover {
+    transform: translateY(-7px);
+    border-color: var(--blue);
+    box-shadow: 0 20px 45px rgba(29,100,140,.10);
+}
+
+.package-number {
+    margin-bottom: 28px;
+    color: var(--blue-dark);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.package-card h3 {
+    margin-bottom: 12px;
+    font-size: 21px;
+}
+
+.package-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.package-action {
+    margin-top: auto;
+    padding-top: 25px;
+    color: var(--blue-dark);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+/* PROJECTS */
+
+.projects {
+    background: white;
 }
 
 .project-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
 }
 
-.project {
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  overflow: hidden;
-  transition: .25s;
-  background: var(--bg);
+.project-card {
+    overflow: hidden;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    transition: .25s ease;
 }
 
-.project-art {
-  height: 190px;
-  background: linear-gradient(135deg, #dff5ff, #8bd5f7);
-  display: grid;
-  place-items: center;
-  font-size: 23px;
-  font-weight: 800;
-  text-align: center;
-  padding: 20px;
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
 }
 
-.project-copy {
-  padding: 23px;
+.project-image {
+    min-height: 205px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #e5f7ff, #9bdfff);
+    color: #143c53;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -1px;
 }
 
-.project-copy h3 {
-  margin-bottom: 8px;
+.project-image.dark {
+    background: linear-gradient(135deg, #171b25, #454e60);
+    color: white;
 }
+
+.project-content {
+    padding: 24px;
+}
+
+.project-content h3 {
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+
+.project-content p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* PROCESS */
 
 .process-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
-.step {
-  padding: 22px 0;
+.process-card {
+    padding: 24px 0;
+    border-top: 2px solid #cceeff;
 }
 
-.step h3 {
-  margin-bottom: 8px;
+.process-number {
+    margin-bottom: 24px;
+    color: var(--blue-dark);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.process-card h3 {
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+
+.process-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* FAQ */
+
+.faq {
+    background: white;
 }
 
 .faq-list {
-  max-width: 820px;
-  margin: auto;
+    max-width: 850px;
+    margin: auto;
 }
 
-details {
-  border-bottom: 1px solid var(--line);
-  padding: 20px 0;
+.faq-list details {
+    padding: 21px 0;
+    border-bottom: 1px solid var(--border);
 }
 
-summary {
-  font-weight: 700;
-  cursor: pointer;
+.faq-list summary {
+    position: relative;
+    padding-right: 30px;
+    cursor: pointer;
+    list-style: none;
+    font-size: 15px;
+    font-weight: 700;
 }
 
-details p {
-  color: var(--muted);
-  padding-top: 12px;
+.faq-list summary::-webkit-details-marker {
+    display: none;
 }
 
-.contact {
-  background: #e8f7ff;
+.faq-list summary::after {
+    content: "+";
+    position: absolute;
+    top: -4px;
+    right: 2px;
+    color: var(--blue-dark);
+    font-size: 23px;
+}
+
+.faq-list details[open] summary::after {
+    content: "−";
+}
+
+.faq-list details p {
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* CONTACT */
+
+.contact-section {
+    background: var(--blue-light);
 }
 
 .contact-grid {
-  grid-template-columns: 1fr 1fr;
+    display: grid;
+    grid-template-columns: 1fr .85fr;
+    align-items: center;
+    gap: 55px;
 }
 
-.contact-copy h2 {
-  font-size: clamp(34px, 4vw, 48px);
-  line-height: 1.15;
-  margin: 12px 0;
+.contact-text h2 {
+    margin: 13px 0 18px;
+    font-size: clamp(34px, 4.5vw, 49px);
+    letter-spacing: -2px;
+    line-height: 1.15;
 }
 
-.contact-copy p {
-  color: var(--muted);
-  margin-bottom: 22px;
+.contact-text p {
+    max-width: 510px;
+    margin-bottom: 25px;
+    color: #536675;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.contact-info {
+    display: grid;
+    gap: 12px;
 }
 
 .contact-item {
-  display: block;
-  background: white;
-  border-radius: 14px;
-  padding: 17px 20px;
-  margin-bottom: 12px;
+    padding: 18px 20px;
+    display: block;
+    background: white;
+    border: 1px solid rgba(0,0,0,.04);
+    border-radius: 15px;
+    transition: .2s ease;
 }
 
-.contact-item small {
-  display: block;
-  color: #777;
-  font-size: 11px;
-  margin-bottom: 4px;
+.contact-item:hover {
+    transform: translateY(-2px);
+}
+
+.contact-item span {
+    display: block;
+    margin-bottom: 7px;
+    color: #7c8792;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
 }
 
 .contact-item strong {
-  overflow-wrap: anywhere;
+    font-size: 14px;
+    overflow-wrap: anywhere;
 }
+
+/* LOGIN / REGISTER */
 
 .login-section {
-  background: var(--bg);
+    background: var(--background);
 }
 
-.login-box, .account-box {
-  max-width: 510px;
-  margin: auto;
-  padding: 35px;
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: 25px;
-  box-shadow: 0 20px 55px #0000000d;
+.login-box {
+    max-width: 510px;
+    margin: auto;
+    padding: 36px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    box-shadow: var(--shadow);
 }
 
-.login-box .heading, .account-box .heading {
-  margin-bottom: 25px;
+.login-box .section-heading {
+    margin-bottom: 25px;
 }
 
-.login-box input {
-  display: block;
-  width: 100%;
-  padding: 14px 15px;
-  border: 1px solid #d9e0e5;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  outline: none;
+.login-box .section-heading h2 {
+    font-size: 29px;
+    letter-spacing: -1px;
 }
 
-.login-box input:focus {
-  border-color: var(--blue);
-  box-shadow: 0 0 0 3px #58bdf522;
+.login-box .section-heading p {
+    font-size: 13px;
 }
 
-.auth-btn {
-  width: 100%;
-  margin-top: 8px;
+.form-label {
+    display: block;
+    margin: 13px 0 7px;
+    color: #424b57;
+    font-size: 12px;
+    font-weight: 750;
 }
 
-.auth-btn:disabled {
-  opacity: .65;
-  cursor: wait;
+.form-input {
+    width: 100%;
+    min-height: 48px;
+    padding: 13px 14px;
+    border: 1px solid #dfe5eb;
+    border-radius: 12px;
+    background: white;
+    color: var(--text);
+    outline: none;
+    font-size: 14px;
+    transition: .2s;
 }
 
-.message {
-  text-align: center;
-  margin-top: 16px;
-  font-size: 13px;
-  overflow-wrap: anywhere;
+.form-input:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(88,189,245,.13);
+}
+
+.auth-actions {
+    display: grid;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.auth-secondary {
+    width: 100%;
+    min-height: 44px;
+    padding: 11px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    color: #384454;
+    font-size: 13px;
+    font-weight: 700;
+    transition: .2s;
+}
+
+.auth-secondary:hover {
+    border-color: var(--blue);
+    color: var(--blue-dark);
+}
+
+.auth-message {
+    min-height: 20px;
+    margin-top: 16px;
+    color: var(--muted);
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.auth-message.success {
+    color: #16814c;
+}
+
+.auth-message.error {
+    color: #c0392b;
+}
+
+.auth-footnote {
+    margin-top: 18px;
+    color: #818b97;
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+/* ACCOUNT */
+
+.account-section {
+    display: none;
+    background: white;
+}
+
+.account-box {
+    max-width: 760px;
+    margin: auto;
+    padding: 35px;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+}
+
+.account-box h2 {
+    font-size: 30px;
+    letter-spacing: -1px;
+}
+
+.account-box > p {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
 }
 
 .account-email {
-  background: #e8f7ff;
-  padding: 15px;
-  border-radius: 12px;
-  margin: 18px 0;
-  overflow-wrap: anywhere;
+    margin: 22px 0;
+    padding: 17px;
+    background: var(--blue-light);
+    border-radius: 13px;
+    font-size: 14px;
+    overflow-wrap: anywhere;
 }
+
+.account-note {
+    padding: 18px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* FOOTER */
 
 footer {
-  background: #111;
-  color: white;
+    background: #111820;
+    color: white;
 }
 
-.footer-grid {
-  max-width: 1180px;
-  margin: auto;
-  padding: 55px 22px;
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  gap: 35px;
+.footer-container {
+    padding: 60px 0 45px;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 45px;
 }
 
-.footer-grid h3 {
-  margin-bottom: 13px;
+.footer-logo {
+    margin-bottom: 15px;
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -1px;
 }
 
-.footer-grid p, .footer-grid a {
-  display: block;
-  color: #aaa;
-  font-size: 13px;
-  margin-bottom: 9px;
+.footer-logo span {
+    color: var(--blue);
 }
 
-.copyright {
-  text-align: center;
-  padding: 17px;
-  border-top: 1px solid #292929;
-  color: #888;
-  font-size: 12px;
+.footer-box p {
+    max-width: 360px;
+    color: #aeb7c1;
+    font-size: 13px;
+    line-height: 1.9;
 }
 
-@media(max-width:1000px) {
-  .links { gap: 10px; }
-  .links a { font-size: 11px; }
-  .package-grid { grid-template-columns: repeat(2, 1fr); }
-  .process-grid { grid-template-columns: repeat(2, 1fr); }
+.footer-box h3 {
+    margin-bottom: 17px;
+    font-size: 14px;
 }
 
-@media(max-width:850px) {
-  .menu { display: block; }
-  .links {
-    display: none;
-    position: absolute;
-    top: 76px;
-    left: 0;
-    right: 0;
-    background: white;
-    padding: 16px 22px 22px;
-    box-shadow: 0 18px 30px #00000010;
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .links.open { display: flex; }
-  .links a { padding: 9px 0; font-size: 13px; }
-  .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 130px; }
-  .about-grid, .contact-grid { grid-template-columns: 1fr; }
-  .cards { grid-template-columns: repeat(2, 1fr); }
+.footer-box a {
+    display: block;
+    width: fit-content;
+    margin-bottom: 12px;
+    color: #aeb7c1;
+    font-size: 13px;
+    transition: .2s;
 }
 
-@media(max-width:580px) {
-  section { padding: 72px 17px; }
-  .nav { height: 68px; }
-  .links { top: 68px; }
-  .hero { padding-top: 115px; }
-  .hero h1 { letter-spacing: -2px; }
-  .cards, .package-grid, .project-grid, .process-grid { grid-template-columns: 1fr; }
-  .package p { min-height: 0; }
-  .footer-grid { grid-template-columns: 1fr; padding: 42px 20px; }
-  .login-box, .account-box { padding: 23px; }
-  .hero-card { min-height: 290px; }
-  .about-art { min-height: 200px; }
+.footer-box a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    padding: 20px;
+    border-top: 1px solid #2b333c;
+    color: #89939f;
+    text-align: center;
+    font-size: 11px;
+}
+
+/* REVEAL ANIMATION */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .65s ease, transform .65s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* TABLET */
+
+@media (max-width: 1050px) {
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links > a {
+        font-size: 11px;
+    }
+
+    .package-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero {
+        gap: 30px;
+    }
+}
+
+/* MOBILE MENU */
+
+@media (max-width: 850px) {
+    .navbar {
+        min-height: 72px;
+    }
+
+    .menu-button {
+        display: block;
+        flex-shrink: 0;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        display: none;
+        align-items: stretch;
+        gap: 0;
+        padding: 12px 22px 20px;
+        background: white;
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 18px 30px rgba(0,0,0,.06);
+    }
+
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-links > a {
+        padding: 12px 4px;
+        font-size: 13px;
+    }
+
+    .nav-links .login-link,
+    .nav-links .order-button {
+        padding: 13px;
+        text-align: center;
+    }
+
+    .hero {
+        min-height: auto;
+        padding-top: 135px;
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .hero h1 {
+        letter-spacing: -2.5px;
+    }
+
+    .hero-visual {
+        min-height: 350px;
+    }
+
+    .visual-card {
+        transform: none;
+    }
+
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-box:first-child {
+        grid-column: 1 / -1;
+    }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 560px) {
+    .container {
+        width: calc(100% - 36px);
+    }
+
+    section {
+        padding: 75px 0;
+    }
+
+    .hero {
+        padding-top: 120px;
+    }
+
+    .hero h1 {
+        font-size: clamp(41px, 12vw, 58px);
+        letter-spacing: -2px;
+    }
+
+    .hero-copy {
+        font-size: 14px;
+    }
+
+    .hero-buttons {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .hero-buttons .button {
+        width: 100%;
+    }
+
+    .hero-visual {
+        min-height: 320px;
+    }
+
+    .visual-card {
+        min-height: 320px;
+        padding: 23px;
+    }
+
+    .visual-card h2 {
+        font-size: 29px;
+    }
+
+    .visual-mini {
+        padding: 10px 5px;
+    }
+
+    .visual-mini strong {
+        font-size: 15px;
+    }
+
+    .section-heading h2 {
+        font-size: 34px;
+        letter-spacing: -1.5px;
+    }
+
+    .about-panel {
+        min-height: 250px;
+        padding: 28px;
+    }
+
+    .about-panel .big-mark {
+        font-size: 34px;
+    }
+
+    .about-points,
+    .services-grid,
+    .package-grid,
+    .project-grid,
+    .process-grid,
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-box:first-child {
+        grid-column: auto;
+    }
+
+    .package-card {
+        min-height: 240px;
+    }
+
+    .login-box,
+    .account-box {
+        padding: 24px 19px;
+    }
+
+    .contact-text h2 {
+        font-size: 36px;
+        letter-spacing: -1.5px;
+    }
+
+    .footer-container {
+        gap: 30px;
+        padding: 45px 0 35px;
+    }
 }
 </style>
 </head>
 
 <body>
-<header>
-  <div class="nav">
-    <a class="logo" href="#home">Mertix<span>Digital</span></a>
-    <nav class="links" id="navLinks">
-      <a href="#home">Ana Sayfa</a>
-      <a href="#about">Hakkımızda</a>
-      <a href="#services">Hizmetler</a>
-      <a href="#packages">Paketler</a>
-      <a href="#projects">Projeler</a>
-      <a href="#process">Süreç</a>
-      <a href="#faq">SSS</a>
-      <a href="#contact">İletişim</a>
-      <a class="pill login-link" href="#login">Giriş Yap</a>
-    </nav>
-    <button class="menu" id="menuButton" aria-label="Menüyü aç" aria-expanded="false">☰</button>
-  </div>
+
+<header class="site-header">
+    <div class="container navbar">
+        <a href="#home" class="logo">Mertix<span>Digital</span></a>
+
+        <nav class="nav-links" id="navLinks" aria-label="Ana menü">
+            <a href="#home">Ana Sayfa</a>
+            <a href="#about">Hakkımızda</a>
+            <a href="#services">Hizmetler</a>
+            <a href="#packages">Paketler</a>
+            <a href="#projects">Projeler</a>
+            <a href="#process">Süreç</a>
+            <a href="#faq">SSS</a>
+            <a href="#contact">İletişim</a>
+            <a href="#login" class="login-link">Giriş Yap</a>
+            <a href="#packages" class="order-button">Sipariş Ver</a>
+        </nav>
+
+        <button class="menu-button" id="menuButton" type="button"
+                aria-label="Menüyü aç" aria-expanded="false">☰</button>
+    </div>
 </header>
 
 <main>
-<section class="hero" id="home">
-  <div>
-    <span class="eyebrow">MERTIX DIGITAL</span>
-    <h1>Dijital dünyada <span>fark yaratın.</span></h1>
-    <p>Modern web siteleri, dijital çözümler ve markanızı daha güçlü gösterecek kullanıcı deneyimleri geliştiriyoruz.</p>
-    <div class="actions">
-      <a class="btn primary" href="#packages">Paketleri İncele</a>
-      <a class="btn secondary" href="#projects">Projeleri Gör</a>
+
+<!-- ANA SAYFA -->
+
+<section class="hero container" id="home">
+    <div class="hero-text reveal">
+        <span class="hero-label">Mertix Digital</span>
+
+        <h1>Dijital dünyada <span>fark yaratın.</span></h1>
+
+        <p class="hero-copy">
+            Markanızı dijital dünyaya taşıyan modern, mobil uyumlu
+            ve ihtiyaçlarınıza göre hazırlanan web siteleri geliştiriyoruz.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#packages" class="button button-primary">Paketleri İncele →</a>
+            <a href="#projects" class="button button-secondary">Projeleri Gör</a>
+        </div>
+
+        <p class="hero-note">Modern tasarım · Mobil uyumluluk · İhtiyaca özel çözümler</p>
     </div>
-  </div>
-  <div class="hero-card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <strong>MERTIX DIGITAL</strong><span class="dot"></span>
+
+    <div class="hero-visual reveal">
+        <div class="hero-glow"></div>
+
+        <div class="visual-card">
+            <div class="visual-top">
+                <span>MERTIX DIGITAL</span>
+                <span class="visual-dot"></span>
+            </div>
+
+            <div>
+                <h2>Fikirleri <span>dijital deneyimlere</span> dönüştürüyoruz.</h2>
+                <p>Her proje için özenli tasarım ve anlaşılır bir kullanıcı deneyimi.</p>
+            </div>
+
+            <div class="visual-bottom">
+                <div class="visual-mini">
+                    <strong>01</strong>
+                    <span>Tasarım</span>
+                </div>
+                <div class="visual-mini">
+                    <strong>02</strong>
+                    <span>Geliştirme</span>
+                </div>
+                <div class="visual-mini">
+                    <strong>03</strong>
+                    <span>Yayın</span>
+                </div>
+            </div>
+        </div>
     </div>
-    <h2>Fikirleri dijital deneyimlere dönüştürüyoruz.</h2>
-    <p>Tasarım, geliştirme ve dijital çözümler.</p>
-  </div>
 </section>
+
+<!-- HAKKIMIZDA -->
 
 <section class="about" id="about">
-  <div class="container">
-    <div class="heading"><small>Hakkımızda</small><h2>Küçük başlayan, büyük hedefleri olan bir yolculuk.</h2></div>
-    <div class="about-grid">
-      <div class="about-art">Mertix<br>Digital.</div>
-      <div class="about-copy">
-        <p>Mertix Digital, modern web tasarım ve dijital çözümler geliştirmek amacıyla oluşturulan bağımsız bir dijital markadır.</p>
-        <p>Bu yolculuğun temelinde öğrenmek, üretmek ve gerçek projeler geliştirmek var.</p>
-        <p>Her projede daha iyi tasarımlar, daha kullanışlı sistemler ve daha güçlü dijital deneyimler oluşturmayı hedefliyoruz.</p>
-      </div>
+    <div class="container">
+        <div class="section-heading reveal">
+            <small>Hakkımızda</small>
+            <h2>Küçük başlayan,<br>büyük hedefleri olan bir yolculuk.</h2>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-panel reveal">
+                <div class="big-mark">Mertix<br><span>Digital.</span></div>
+                <p>Fikirleri kullanışlı, modern ve güçlü dijital deneyimlere dönüştürüyoruz.</p>
+            </div>
+
+            <div class="about-copy reveal">
+                <p>
+                    Mertix Digital, web tasarımı ve dijital çözümler geliştirmek
+                    amacıyla oluşturulmuş bağımsız bir dijital markadır.
+                </p>
+                <p>
+                    Her projede hedefimiz; anlaşılır bir tasarım, rahat kullanım
+                    ve farklı ekranlarda düzgün çalışan bir web sitesi sunmaktır.
+                </p>
+                <p>
+                    Projenin ihtiyaçlarını birlikte belirleyerek uygun bir tasarım
+                    ve çalışma planı oluşturuyoruz.
+                </p>
+
+                <div class="about-points">
+                    <div class="about-point"><span>✓</span>Mobil uyumlu tasarım</div>
+                    <div class="about-point"><span>✓</span>Özgün görünüm</div>
+                    <div class="about-point"><span>✓</span>İhtiyaca göre planlama</div>
+                    <div class="about-point"><span>✓</span>Açık iletişim</div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
+
+<!-- HİZMETLER -->
 
 <section id="services">
-  <div class="container">
-    <div class="heading"><small>Hizmetler</small><h2>Neler yapıyoruz?</h2><p>İhtiyaca göre modern ve kullanışlı dijital çözümler geliştiriyoruz.</p></div>
-    <div class="cards">
-      <div class="card"><div class="num">01</div><h3>Web Tasarım</h3><p>Markanıza uygun, modern ve kullanıcı dostu web siteleri.</p></div>
-      <div class="card"><div class="num">02</div><h3>Kurumsal Siteler</h3><p>İşletmenizin internette profesyonel görünmesini sağlayan çözümler.</p></div>
-      <div class="card"><div class="num">03</div><h3>Ürün Katalogları</h3><p>Ürünlerinizi modern bir dijital vitrinde sunun.</p></div>
-      <div class="card"><div class="num">04</div><h3>Mobil Uyumluluk</h3><p>Telefon, tablet ve bilgisayarlarda çalışan tasarımlar.</p></div>
-      <div class="card"><div class="num">05</div><h3>Özel Çözümler</h3><p>İhtiyacınıza göre planlanan özel web sistemleri.</p></div>
-      <div class="card"><div class="num">06</div><h3>Bakım ve Geliştirme</h3><p>Mevcut web sitelerinin düzenlenmesi ve güncellenmesi.</p></div>
+    <div class="container">
+        <div class="section-heading center reveal">
+            <small>Hizmetler</small>
+            <h2>Neler yapıyoruz?</h2>
+            <p>Projenizin ihtiyacına göre şekillenen web çözümleri.</p>
+        </div>
+
+        <div class="services-grid">
+            <article class="service-card reveal">
+                <div class="service-icon">✦</div>
+                <h3>Web Tasarım</h3>
+                <p>Markanıza uygun, sade ve modern bir görünüm oluşturuyoruz.</p>
+            </article>
+
+            <article class="service-card reveal">
+                <div class="service-icon">▣</div>
+                <h3>Mobil Uyumluluk</h3>
+                <p>Sitenizin telefon, tablet ve bilgisayarlarda düzgün görünmesini hedefliyoruz.</p>
+            </article>
+
+            <article class="service-card reveal">
+                <div class="service-icon">⌘</div>
+                <h3>Kurumsal Web Siteleri</h3>
+                <p>İşletmenizi, hizmetlerinizi ve iletişim bilgilerinizi düzenli biçimde sunuyoruz.</p>
+            </article>
+
+            <article class="service-card reveal">
+                <div class="service-icon">◎</div>
+                <h3>Dijital Vitrin</h3>
+                <p>Ürün ve hizmetlerinizi müşterilerinize çevrim içi olarak tanıtmanıza yardımcı oluyoruz.</p>
+            </article>
+
+            <article class="service-card reveal">
+                <div class="service-icon">↗</div>
+                <h3>Yayınlama Desteği</h3>
+                <p>Web sitenizin yayına alınması ve alan adı seçenekleri konusunda destek sağlıyoruz.</p>
+            </article>
+
+            <article class="service-card reveal">
+                <div class="service-icon">⚙</div>
+                <h3>Geliştirme ve Güncelleme</h3>
+                <p>Projenin kapsamına göre yeni bölümler ve iyileştirmeler planlıyoruz.</p>
+            </article>
+        </div>
     </div>
-  </div>
 </section>
+
+<!-- PAKETLER -->
 
 <section class="packages" id="packages">
-  <div class="container">
-    <div class="heading"><small>Web Site Paketleri</small><h2>Size uygun paketi seçin.</h2><p>Projenizin ihtiyaçlarına göre dört farklı seçenek.</p></div>
-    <div class="package-grid">
-      <a class="package" href="siparis.html?paket=baslangic"><div class="num">01</div><h3>Başlangıç Site</h3><p>Temel ihtiyaçları karşılayan sade ve modern web sitesi.</p><strong>Teklif Al →</strong></a>
-      <a class="package" href="siparis.html?paket=klasik"><div class="num">02</div><h3>Klasik Site</h3><p>İşletmesini profesyonel şekilde tanıtmak isteyenlere.</p><strong>Teklif Al →</strong></a>
-      <a class="package" href="siparis.html?paket=yuksek"><div class="num">03</div><h3>Yüksek Site</h3><p>Daha gelişmiş tasarım ve kapsamlı web ihtiyaçları için.</p><strong>Teklif Al →</strong></a>
-      <a class="package" href="siparis.html?paket=ultra"><div class="num">04</div><h3>Ultra Site</h3><p>Özel tasarım ve gelişmiş web çözümleri isteyenlere.</p><strong>Teklif Al →</strong></a>
+    <div class="container">
+        <div class="section-heading center reveal">
+            <small>Web Sitesi Paketleri</small>
+            <h2>İhtiyacınıza uygun paketi seçin.</h2>
+            <p>Bir paket seçerek sipariş talebinizi oluşturabilirsiniz. Fiyat ve kapsam proje detaylarına göre netleştirilir.</p>
+        </div>
+
+        <div class="package-grid">
+            <a href="siparis.html?paket=baslangic" class="package-card reveal">
+                <span class="package-number">PAKET 01</span>
+                <h3>Başlangıç Sitesi</h3>
+                <p>Temel tanıtım ve iletişim ihtiyaçları için sade bir web sitesi.</p>
+                <span class="package-action">Paketi seç →</span>
+            </a>
+
+            <a href="siparis.html?paket=klasik" class="package-card reveal">
+                <span class="package-number">PAKET 02</span>
+                <h3>Klasik Site</h3>
+                <p>Birden fazla bölüme sahip, işletmenizi ayrıntılı tanıtan site.</p>
+                <span class="package-action">Paketi seç →</span>
+            </a>
+
+            <a href="siparis.html?paket=yuksek" class="package-card reveal">
+                <span class="package-number">PAKET 03</span>
+                <h3>Yüksek Site</h3>
+                <p>Daha gelişmiş tasarım ve daha kapsamlı web ihtiyaçları için.</p>
+                <span class="package-action">Paketi seç →</span>
+            </a>
+
+            <a href="siparis.html?paket=ultra" class="package-card reveal">
+                <span class="package-number">PAKET 04</span>
+                <h3>Ultra Site</h3>
+                <p>Özel tasarım ve gelişmiş özellikler isteyen projeler için.</p>
+                <span class="package-action">Paketi seç →</span>
+            </a>
+        </div>
     </div>
-  </div>
 </section>
+
+<!-- PROJELER -->
 
 <section class="projects" id="projects">
-  <div class="container">
-    <div class="heading"><small>Projeler</small><h2>Ürettiklerimiz.</h2><p>Geliştirdiğimiz ve üzerinde çalıştığımız projeler.</p></div>
-    <div class="project-grid">
-      <div class="project"><div class="project-art">Çağla Çerçeve</div><div class="project-copy"><h3>Çağla Çerçeve</h3><p>Cam, ayna ve çerçeve ürünleri için dijital vitrin.</p></div></div>
-      <div class="project"><div class="project-art">Mertix Digital</div><div class="project-copy"><h3>Mertix Digital</h3><p>Mertix Digital'in kendi dijital platformu.</p></div></div>
-      <div class="project"><div class="project-art">Yakında</div><div class="project-copy"><h3>Yeni Projeler</h3><p>Yeni projeler geliştikçe burada yerlerini alacak.</p></div></div>
+    <div class="container">
+        <div class="section-heading center reveal">
+            <small>Projeler</small>
+            <h2>Ürettiklerimiz.</h2>
+            <p>Geliştirdiğimiz ve üzerinde çalıştığımız projeler.</p>
+        </div>
+
+        <div class="project-grid">
+            <article class="project-card reveal">
+                <div class="project-image">Çağla Çerçeve</div>
+                <div class="project-content">
+                    <h3>Çağla Çerçeve</h3>
+                    <p>Cam, ayna ve çerçeve ürünlerini dijital ortamda sunmaya yönelik web sitesi projesi.</p>
+                </div>
+            </article>
+
+            <article class="project-card reveal">
+                <div class="project-image dark">Mertix Digital</div>
+                <div class="project-content">
+                    <h3>Mertix Digital</h3>
+                    <p>Hizmetleri ve web sitesi paketlerini tanıtan kendi dijital platformumuz.</p>
+                </div>
+            </article>
+
+            <article class="project-card reveal">
+                <div class="project-image">Yeni Proje</div>
+                <div class="project-content">
+                    <h3>Yakında</h3>
+                    <p>Yeni projeler geliştikçe bu alanda paylaşılacaktır.</p>
+                </div>
+            </article>
+        </div>
     </div>
-  </div>
 </section>
+
+<!-- SÜREÇ -->
 
 <section id="process">
-  <div class="container">
-    <div class="heading"><small>Çalışma Süreci</small><h2>Nasıl ilerliyoruz?</h2></div>
-    <div class="process-grid">
-      <div class="step"><div class="num">01 — TANIŞALIM</div><h3>İhtiyacı Anlayalım</h3><p>Projenizi ve hedeflerinizi konuşuyoruz.</p></div>
-      <div class="step"><div class="num">02 — PLANLAYALIM</div><h3>Yol Haritası</h3><p>Site yapısını ve deneyimini planlıyoruz.</p></div>
-      <div class="step"><div class="num">03 — GELİŞTİRELİM</div><h3>Tasarlayalım</h3><p>Tasarımı çalışan bir web sitesine dönüştürüyoruz.</p></div>
-      <div class="step"><div class="num">04 — YAYINA ALALIM</div><h3>Son Kontrol</h3><p>Kontrolleri tamamlayıp siteyi yayına hazırlıyoruz.</p></div>
+    <div class="container">
+        <div class="section-heading center reveal">
+            <small>Çalışma Süreci</small>
+            <h2>Nasıl ilerliyoruz?</h2>
+            <p>Projenin başından teslimine kadar planlı bir çalışma süreci.</p>
+        </div>
+
+        <div class="process-grid">
+            <article class="process-card reveal">
+                <div class="process-number">01 — TANIŞALIM</div>
+                <h3>İhtiyacı Anlayalım</h3>
+                <p>Projenizi, hedeflerinizi ve ihtiyaçlarınızı konuşuyoruz.</p>
+            </article>
+
+            <article class="process-card reveal">
+                <div class="process-number">02 — PLANLAYALIM</div>
+                <h3>Yol Haritası</h3>
+                <p>Site yapısını ve kullanıcı deneyimini birlikte planlıyoruz.</p>
+            </article>
+
+            <article class="process-card reveal">
+                <div class="process-number">03 — GELİŞTİRELİM</div>
+                <h3>Tasarım ve Kodlama</h3>
+                <p>Tasarımı çalışan bir web sitesine dönüştürüyoruz.</p>
+            </article>
+
+            <article class="process-card reveal">
+                <div class="process-number">04 — YAYINA ALALIM</div>
+                <h3>Son Kontroller</h3>
+                <p>Kontrolleri tamamlayıp projeyi yayına hazır hâle getiriyoruz.</p>
+            </article>
+        </div>
     </div>
-  </div>
 </section>
+
+<!-- SSS -->
 
 <section class="faq" id="faq">
-  <div class="container">
-    <div class="heading"><small>SSS</small><h2>Sık Sorulan Sorular</h2></div>
-    <div class="faq-list">
-      <details><summary>Web sitesi ne kadar sürede hazırlanır?</summary><p>Projenin kapsamına göre süre değişir. İhtiyaçları belirledikten sonra tahmini süre paylaşılır.</p></details>
-      <details><summary>Web sitesi mobil uyumlu olur mu?</summary><p>Evet, tasarımlar telefon, tablet ve bilgisayarlara uyumlu hazırlanır.</p></details>
-      <details><summary>Alan adı ve yayınlama konusunda yardımcı oluyor musunuz?</summary><p>Projenin kapsamına göre alan adı ve yayınlama konusunda yardımcı olunabilir.</p></details>
-      <details><summary>Site teslim edildikten sonra değişiklik yapılabilir mi?</summary><p>Evet. Teslim sonrası taleplerin kapsamına göre ek ücret uygulanabilir.</p></details>
+    <div class="container">
+        <div class="section-heading center reveal">
+            <small>SSS</small>
+            <h2>Sık Sorulan Sorular</h2>
+        </div>
+
+        <div class="faq-list reveal">
+            <details>
+                <summary>Web sitesi ne kadar sürede hazırlanır?</summary>
+                <p>Süre, projenin kapsamına ve istenen özelliklere göre değişir. Tahmini süre sipariş detayları belirlendiğinde paylaşılır.</p>
+            </details>
+
+            <details>
+                <summary>Web sitesi telefonlarda düzgün görünür mü?</summary>
+                <p>Tasarımlar telefon, tablet ve bilgisayar ekranlarına uyumlu olacak şekilde hazırlanır.</p>
+            </details>
+
+            <details>
+                <summary>Alan adı ve hosting konusunda yardımcı oluyor musunuz?</summary>
+                <p>Projenin ihtiyacına göre alan adı ve yayınlama seçenekleri hakkında yönlendirme yapılabilir. Alan adı ve hizmet ücretleri ayrıca belirlenebilir.</p>
+            </details>
+
+            <details>
+                <summary>Site teslim edildikten sonra değişiklik yaptırabilir miyim?</summary>
+                <p>Evet. Teslim sonrasında yapılacak değişiklikler için ayrıca talep oluşturulabilir. Talebin kapsamına göre ücretlendirme yapılabilir.</p>
+            </details>
+
+            <details>
+                <summary>Sipariş vermek için hesap açmam gerekiyor mu?</summary>
+                <p>Bu sayfadaki hesap alanı giriş ve kayıt içindir. Sipariş sayfasındaki formun mevcut işleyişi ayrıca yapılandırılmalıdır.</p>
+            </details>
+        </div>
     </div>
-  </div>
 </section>
 
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="contact-grid">
-      <div class="contact-copy"><small style="color:#258fc4;font-weight:800">İLETİŞİM</small><h2>Bir fikriniz mi var?</h2><p>Projenizi konuşalım. İhtiyacınızı dinleyelim ve birlikte nasıl ilerleyebileceğimize bakalım.</p><a class="btn primary" href="tel:+905521528061">Bizi Ara</a></div>
-      <div>
-        <a class="contact-item" href="tel:+905521528061"><small>TELEFON</small><strong>0552 152 80 61</strong></a>
-        <a class="contact-item" href="https://wa.me/905521528061"><small>WHATSAPP</small><strong>WhatsApp üzerinden yaz</strong></a>
-        <a class="contact-item" href="mailto:iletisim@mertixdigital.com"><small>E-POSTA</small><strong>iletisim@mertixdigital.com</strong></a>
-        <div class="contact-item"><small>KONUM</small><strong>Ünye / Ordu</strong></div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- İLETİŞİM -->
 
-<section class="login-section" id="login">
-  <div class="container">
-    <div class="login-box">
-      <div class="heading"><small>MERTIX DIGITAL</small><h2 id="authTitle">Hesabınıza Giriş Yapın</h2><p id="authSubtitle">Hesabınız yoksa yeni hesap oluşturabilirsiniz.</p></div>
-      <form id="authForm">
-        <input type="email" id="email" placeholder="E-posta adresiniz" autocomplete="email" required>
-        <input type="password" id="password" placeholder="Şifreniz (en az 6 karakter)" autocomplete="current-password" minlength="6" required>
-        <button type="submit" id="loginButton" class="btn primary auth-btn">Giriş Yap</button>
-        <button type="button" id="registerButton" class="btn secondary auth-btn">Kayıt Ol</button>
-        <button type="button" id="resetButton" class="btn secondary auth-btn">Şifremi Unuttum</button>
-      </form>
-      <p id="authMessage" class="message" role="status" aria-live="polite"></p>
-    </div>
-  </div>
-</section>
+<section class="contact-section" id="contact">
+    <div class="container contact-grid">
+        <div class="contact-text reveal">
+            <span class="eyebrow">İletişim</span>
+            <h2>Bir fikriniz mi var?</h2>
+            <p>
+                Projenizi konuşalım. İhtiyacınızı dinleyelim ve birlikte
+                nasıl ilerleyebileceğimize bakalım.
+            </p>
+            <a href="https://wa.me/905521528061" target="_blank"
+               rel="noopener noreferrer" class="button button-primary">
+                WhatsApp'tan Yaz →
+            </a>
+        </div>
 
-<section id="account" style="display:none">
-  <div class="container">
-    <div class="account-box">
-      <div class="heading"><small>HESABIM</small><h2>Hoş geldiniz!</h2></div>
-      <div class="account-email"><strong>E-posta: </strong><span id="userEmail"></span></div>
-      <button type="button" id="logoutButton" class="btn primary auth-btn">Çıkış Yap</button>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="footer-grid">
-    <div><div class="logo">Mertix<span>Digital</span></div><p>Fikirleri modern dijital deneyimlere dönüştürüyoruz.</p></div>
-    <div><h3>Menü</h3><a href="#home">Ana Sayfa</a><a href="#about">Hakkımızda</a><a href="#services">Hizmetler</a><a href="#packages">Paketler</a><a href="#contact">İletişim</a></div>
-    <div><h3>İletişim</h3><a href="tel:+905521528061">0552 152 80 61</a><a href="https://wa.me/905521528061">WhatsApp</a><a href="mailto:iletisim@mertixdigital.com">E-posta</a></div>
-  </div>
-  <div class="copyright">© 2026 Mertix Digital — Tüm Hakları Saklıdır.</div>
-</footer>
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  sendEmailVerification,
-  sendPasswordResetEmail,
-  signOut,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAOiLYwGXlPdxy_VoCKwYFpXd9iMMrOdtg",
-  authDomain: "mertix-digital.firebaseapp.com",
-  projectId: "mertix-digital",
-  storageBucket: "mertix-digital.firebasestorage.app",
-  messagingSenderId: "481724280508",
-  appId: "1:481724280508:web:7760a545d1e2303bcfeab9",
-  measurementId: "G-45CBZFGRGT"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const $ = id => document.getElementById(id);
-
-function showMessage(text, type = "info") {
-  const element = $("authMessage");
-  element.textContent = text;
-  element.style.color =
-    type === "error" ? "#b42318" :
-    type === "success" ? "#18794e" : "#555";
-}
-
-function getCredentials(requirePassword = true) {
-  const email = $("email").value.trim();
-  const password = $("password").value;
-
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    showMessage("Lütfen geçerli bir e-posta adresi yazın.", "error");
-    $("email").focus();
-    return null;
-  }
-
-  if (requirePassword && !password) {
-    showMessage("Lütfen şifrenizi yazın.", "error");
-    $("password").focus();
-    return null;
-  }
-
-  if (requirePassword && password.length < 6) {
-    showMessage("Şifre en az 6 karakter olmalı.", "error");
-    $("password").focus();
-    return null;
-  }
-
-  return { email, password };
-}
-
-function showAuthError(error, action) {
-  console.error(action + " hatası:", error);
-
-  const errors = {
-    "auth/email-already-in-use": "Bu e-posta zaten kayıtlı. Giriş yapmayı deneyin.",
-    "auth/invalid-email": "E-posta adresi geçerli değil.",
-    "auth/weak-password": "Şifre en az 6 karakter olmalı.",
-    "auth/invalid-credential": "E-posta veya şifre hatalı.",
-    "auth/user-not-found": "Bu e-posta ile kayıtlı hesap bulunamadı.",
-    "auth/wrong-password": "Şifre hatalı.",
-    "auth/too-many-requests": "Çok fazla deneme yapıldı. Bir süre sonra tekrar deneyin.",
-    "auth/network-request-failed": "Bağlantı hatası. İnternetinizi kontrol edin.",
-    "auth/operation-not-allowed": "Firebase Console'da E-posta/Şifre giriş yöntemini etkinleştirin.",
-    "auth/unauthorized-continue-uri": "Firebase Authentication yetkili alan adlarını kontrol edin.",
-    "auth/missing-email": "E-posta adresinizi yazın."
-  };
-
-  showMessage(
-    errors[error.code] || `${action} başarısız: ${error.code || error.message || "Bilinmeyen hata"}`,
-    "error"
-  );
-}
-
-async function runButton(button, action) {
-  if (button.disabled) return;
-
-  const oldText = button.textContent;
-  button.disabled = true;
-  button.textContent = "Lütfen bekleyin…";
-
-  try {
-    await action();
-  } catch (error) {
-    console.error(error);
-    showMessage("Beklenmeyen bir hata oluştu. Tekrar deneyin.", "error");
-  } finally {
-    button.disabled = false;
-    button.textContent = oldText;
-  }
-}
-
-$("authForm").addEventListener("submit", async event => {
-  event.preventDefault();
-
-  await runButton($("loginButton"), async () => {
-    const data = getCredentials();
-    if (!data) return;
-
-    try {
-      const result = await signInWithEmailAndPassword(auth, data.email, data.password);
-      await result.user.reload();
-
-      if (!result.user.emailVerified) {
-        await signOut(auth);
-        showMessage(
-          "Önce e-posta adresinizi doğrulayın. Gelen kutunuzu ve spam klasörünü kontrol edin.",
-          "error"
-        );
-        return;
-      }
-
-      showMessage("Giriş başarılı!", "success");
-      location.hash = "account";
-    } catch (error) {
-      showAuthError(error, "Giriş");
-    }
-  });
-});
-
-$("registerButton").addEventListener("click", async () => {
-  await runButton($("registerButton"), async () => {
-    const data = getCredentials();
-    if (!data) return;
-
-    try {
-      const result = await createUserWithEmailAndPassword(auth, data.email, data.password);
-
-      await sendEmailVerification(result.user, {
-        url: "https://mertix-digital.web.app/",
-        handleCodeInApp: false
-      });
-
-      await signOut(auth);
-
-      showMessage(
-        "Kayıt başarılı! E-posta doğrulama bağlantısını gelen kutunuzda ve spam klasöründe kontrol edin.",
-        "success"
-      );
-    } catch (error) {
-      showAuthError(error, "Kayıt");
-    }
-  });
-});
-
-$("resetButton").addEventListener("click", async () => {
-  await runButton($("resetButton"), async () => {
-    const data = getCredentials(false);
-    if (!data) return;
-
-    try {
-      await sendPasswordResetEmail(auth, data.email, {
-        url: "https://mertix-digital.web.app/",
-        handleCodeInApp: false
-      });
-
-      showMessage(
-        "Şifre sıfırlama e-postası gönderildi. Gelen kutunuzu ve spam klasörünü kontrol edin.",
-        "success"
-      );
-    } catch (error) {
-      showAuthError(error, "Şifre sıfırlama");
-    }
-  });
-});
-
-$("logoutButton").addEventListener("click", async () => {
-  try {
-    await signOut(auth);
-    location.hash = "home";
-    showMessage("Hesabınızdan çıkış yapıldı.", "success");
-  } catch (error) {
-    showAuthError(error, "Çıkış");
-  }
-});
-
-onAuthStateChanged(auth, user => {
-  const loggedIn = Boolean(user && user.emailVerified);
-
-  $("account").style.display = loggedIn ? "block" : "none";
-  $("login").style.display = loggedIn ? "none" : "block";
-
-  const loginLink = document.querySelector(".login-link");
-  loginLink.textContent = loggedIn ? "Hesabım" : "Giriş Yap";
-  loginLink.href = loggedIn ? "#account" : "#login";
-
-  if (loggedIn) {
-    $("userEmail").textContent = user.email || "";
-  }
-});
-
-const menuButton = document.getElementById("menuButton");
-const navLinks = document.getElementById("navLinks");
-
-menuButton.addEventListener("click", () => {
-  const opened = navLinks.classList.toggle("open");
-  menuButton.setAttribute("aria-expanded", String(opened));
-  menuButton.textContent = opened ? "×" : "☰";
-});
-
-document.querySelectorAll("#navLinks a").forEach(link => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("open");
-    menuButton.setAttribute("aria-expanded", "false");
-    menuButton.textContent = "☰";
-  });
-});
-</script>
-</body>
-</html>
+        <div class="contact-info reveal">
+            <a class="contact-item" href="tel:+905521
